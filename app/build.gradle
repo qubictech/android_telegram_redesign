@@ -42,4 +42,8 @@ dependencies {
 
     //material design
     implementation 'com.google.android.material:material:1.2.0-alpha05'
+
+    // glide image loader
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
 }

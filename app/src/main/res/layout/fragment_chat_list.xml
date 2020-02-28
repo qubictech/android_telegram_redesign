@@ -21,6 +21,8 @@
         <com.google.android.material.tabs.TabLayout
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             android:id="@+id/tabs"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicator="@drawable/ic_rectangle_193"

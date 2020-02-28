@@ -2,17 +2,35 @@ package com.tarms.bd.messagingapp.fragment.tabs
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tarms.bd.messagingapp.R
+import com.tarms.bd.messagingapp.adapter.ChatListAdapter
+import com.tarms.bd.messagingapp.data.Chat
+import java.util.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class ChatTabFragment : Fragment() {
+
+    companion object {
+        const val ARGS = "f_name"
+
+        fun newInstance(fragmentName: String) = ChatTabFragment().apply {
+
+            arguments = bundleOf(
+                ARGS to fragmentName
+            )
+        }
+    }
+
+    private lateinit var fragmentName: String
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var chatListAdapter: ChatListAdapter
+    private val chatList = mutableListOf<Chat>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,5 +38,111 @@ class ChatTabFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat_tab, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            fragmentName = it.getString(ARGS).toString()
+        }
+        recyclerView = view.findViewById(R.id.recycler_view)
+
+        fragmentName.let {
+            when (it) {
+                "All" -> chatList(
+                    listOf(
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        ),
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        ),
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        ),
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        ),
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        )
+                    )
+                )
+                "Friends" -> chatList(
+                    listOf(
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        ),
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        ),
+                        Chat(
+                            "",
+                            "Sabbir",
+                            "Hi! What about your study?",
+                            Date().time,
+                            3
+                        )
+                    )
+                )
+                "Work" -> chatList(
+                    listOf(
+
+                    )
+                )
+            }
+        }
+    }
+
+    private fun chatList(chat: List<Chat>) {
+        chatListAdapter = ChatListAdapter(chatList)
+
+        recyclerView.apply {
+            adapter = chatListAdapter
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(context)
+        }
+//
+//        for (i in 0..10) {
+//            chatList.add(
+//                Chat(
+//                    "",
+//                    "Sabbir",
+//                    "Hi! What about your study?",
+//                    Date().time,
+//                    3
+//                )
+//            )
+//        }
+//
+//        chatListAdapter.notifyDataSetChanged()
     }
 }

@@ -11,8 +11,7 @@ import android.view.ViewGroup
 import com.tarms.bd.messagingapp.R
 
 class MoreFragment : Fragment() {
-//    private var listener: OnFragmentInteractionListener? = null
-
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,29 +19,4 @@ class MoreFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_more, container, false)
     }
-
-//    // TODO: Rename method, update argument and hook method into UI event
-//    fun onButtonPressed(uri: Uri) {
-//        listener?.onFragmentInteraction(uri)
-//    }
-//
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnFragmentInteractionListener) {
-//            listener = context
-//        } else {
-//            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-//        }
-//    }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//        listener = null
-//    }
-//
-//    interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        fun onFragmentInteraction(uri: Uri)
-//    }
-
 }

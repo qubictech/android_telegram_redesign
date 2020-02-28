@@ -20,21 +20,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.container, ChatListFragment())
-//                .commit()
-//        }
-
         bottomNavigationView = findViewById(R.id.bottom_nav)
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
 
         pager = findViewById(R.id.view_pager)
 
-        val fragments = listOf(ChatListFragment(),ContactListFragment(), MoreFragment())
+        val fragments = listOf(ChatListFragment(), ContactListFragment(), MoreFragment())
 
         mainFragmentViewPagerAdapter =
-            MainFragmentViewPagerAdapter(supportFragmentManager,  fragments)
+            MainFragmentViewPagerAdapter(supportFragmentManager, fragments)
 
         pager.apply {
             adapter = mainFragmentViewPagerAdapter
@@ -67,11 +61,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when (p0.itemId) {
-            R.id.people -> pager.currentItem = 0
-
-            R.id.message -> pager.currentItem = 1
-
-            R.id.more -> pager.currentItem = 2
+            R.id.message -> pager.setCurrentItem(0, true)
+            R.id.people -> pager.setCurrentItem(1, true)
+            R.id.more -> pager.setCurrentItem(2, true)
         }
 
         return true

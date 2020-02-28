@@ -28,7 +28,11 @@ class ChatListFragment : Fragment() {
         val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
 
-        val fragments = listOf<Fragment>(ChatTabFragment(), ChatTabFragment(), ChatTabFragment())
+        val fragments = listOf<Fragment>(
+            ChatTabFragment.newInstance("All"),
+            ChatTabFragment.newInstance("Friends"),
+            ChatTabFragment.newInstance("Work")
+        )
 
         val tabAdapter = ChatTabAdapter(childFragmentManager, fragments)
 
