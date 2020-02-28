@@ -94,6 +94,8 @@ class ContactListFragment : Fragment() {
     private fun readContactList() {
         contactList.clear()
 
+//      todo: need to intersect between friends and contact list to separate friends and non friends contact list.
+
         val phones = context!!.contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,

@@ -13,6 +13,7 @@ import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatListAdapter
 import com.tarms.bd.messagingapp.data.Chat
 import java.util.*
+import java.util.logging.Logger
 
 class ChatTabFragment : Fragment() {
 
@@ -52,7 +53,7 @@ class ChatTabFragment : Fragment() {
 
     private fun chatList(type: String) {
         chatList.clear()
-        chatListAdapter = ChatListAdapter(chatList)
+        chatListAdapter = context?.let { ChatListAdapter(it,chatList) }!!
 
         recyclerView.apply {
             adapter = chatListAdapter
@@ -67,7 +68,7 @@ class ChatTabFragment : Fragment() {
                     "Sabbir",
                     "Hi! What about your study?",
                     Date().time,
-                    3
+                    i
                 )
             )
         }

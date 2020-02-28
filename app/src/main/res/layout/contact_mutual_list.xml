@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
+        <variable
+            name="click_event"
+            type="com.tarms.bd.messagingapp.utils.ContactItemClickEventListener" />
         <variable
             name="contact"
             type="com.tarms.bd.messagingapp.data.Contact" />
@@ -13,6 +17,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="@{(v)->click_event.onItemClick(v,contact)}"
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="0dp">
 

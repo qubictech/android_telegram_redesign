@@ -28,6 +28,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contact_mutual_list"
+            android:paddingBottom="50dp"
+            android:clipToPadding="false"
             tools:listitem="@layout/contact_mutual_list"
             android:overScrollMode="never"
             android:layout_width="match_parent"

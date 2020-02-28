@@ -5,8 +5,9 @@
     package="com.tarms.bd.messagingapp">
 
     <dist:module dist:instant="true" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".main.MainActivity"/>
+        <activity android:name=".main.ChatActivity"></activity>
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

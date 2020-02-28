@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="chat"
             type="com.tarms.bd.messagingapp.data.Chat" />
+
+        <variable
+            name="click_event"
+            type="com.tarms.bd.messagingapp.utils.ChatItemClickEventListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -15,6 +21,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{(v)->click_event.onItemClick(v,chat)}"
         app:cardCornerRadius="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,10 +75,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_black_box_fill"
+                android:background="@drawable/ic_unread_message_counter_bg"
                 android:gravity="center"
+                android:hint="0"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
                 android:text="@{String.valueOf(chat.unreadMsgCount)}"
                 android:textColor="#fff"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/timestamp" />
 
