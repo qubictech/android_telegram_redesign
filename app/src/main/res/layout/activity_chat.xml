@@ -28,6 +28,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <androidx.cardview.widget.CardView
+        app:cardElevation="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
@@ -44,10 +45,12 @@
                 style="@style/Widget.AppCompat.Light.ActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_attach_outline" />
 
             <EditText
+                android:maxHeight="150dp"
                 android:id="@+id/message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,7 +58,7 @@
                 android:background="@drawable/ic_text_view_style"
                 android:gravity="center"
                 android:hint="Type something..."
-                android:inputType="textCapSentences|text"
+                android:inputType="textCapSentences|textMultiLine"
                 android:textSize="14sp" />
 
             <ImageButton
@@ -63,6 +66,7 @@
                 style="@style/Widget.AppCompat.Light.ActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_mic_outline" />
 
@@ -71,6 +75,7 @@
                 style="@style/Widget.AppCompat.Light.ActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:contentDescription="@string/app_name"
                 android:rotation="-45"
                 android:src="@drawable/ic_send_black_24dp"

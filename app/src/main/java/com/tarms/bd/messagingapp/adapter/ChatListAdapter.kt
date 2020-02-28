@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.tarms.bd.messagingapp.data.Chat
 import com.tarms.bd.messagingapp.databinding.ChatListItemBinding
@@ -25,8 +26,15 @@ class ChatListAdapter(private val context: Context, private val chatlist: List<C
     }
 
     override fun onItemClick(view: View, chat: Chat) {
-        Logger.getLogger("onItemClick").warning("------------------> Clicked! ${chat.unreadMsgCount}")
-        startActivity(context, Intent(context, ChatActivity::class.java), null)
+        Logger.getLogger("onItemClick")
+            .warning("------------------> Clicked! ${chat.name}")
+
+        val args = bundleOf(
+            "name" to chat.name
+        )
+        val intent = Intent(context, ChatActivity::class.java)
+        intent.putExtra("chat", chat)
+        startActivity(context, intent, args)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatListHolder {
