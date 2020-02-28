@@ -22,7 +22,7 @@ class ChatActivity : AppCompatActivity() {
         val chat = intent.getParcelableExtra<Chat>("chat")
 
         chat?.let {
-            supportActionBar?.title = "${it.name} ${it.unreadMsgCount}"
+            supportActionBar?.title = it.name
         }
     }
 

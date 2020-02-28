@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        app:cardElevation="0dp"
         android:onClick="@{(v)->click_event.onItemClick(v,contact)}"
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="0dp">

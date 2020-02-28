@@ -13,7 +13,6 @@ import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatListAdapter
 import com.tarms.bd.messagingapp.data.Chat
 import java.util.*
-import java.util.logging.Logger
 
 class ChatTabFragment : Fragment() {
 
@@ -53,7 +52,7 @@ class ChatTabFragment : Fragment() {
 
     private fun chatList(type: String) {
         chatList.clear()
-        chatListAdapter = context?.let { ChatListAdapter(it,chatList) }!!
+        chatListAdapter = context?.let { ChatListAdapter(it, chatList) }!!
 
         recyclerView.apply {
             adapter = chatListAdapter
@@ -61,16 +60,91 @@ class ChatTabFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
-        for (i in 0..10) {
-            chatList.add(
-                Chat(
-                    "jhsdfksdf",
-                    "Sabbir",
-                    "Hi! What about your study?",
-                    Date().time,
-                    i
+        when (type) {
+            "All" -> {
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Sabbir", "Hi! How was your day?",
+                        Date().time,
+                        0
+                        )
                 )
-            )
+
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Saharia", "Have you taken your dinner?",
+                        Date().time,
+                        2
+                    )
+                )
+
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Aysha", "What about your study?",
+                        Date().time,
+                        0
+                    )
+                )
+
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Rabin", "Okay! Bye",
+                        Date().time,
+                        0
+                    )
+                )
+
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Milon", "Okay! See you soon.",
+                        Date().time,
+                        1
+                    )
+                )
+
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Ahsan", "We'll meet tomorrow!",
+                        Date().time,
+                        1
+                    )
+                )
+            }
+            "Friends"->{
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Rabin", "Okay! Bye",
+                        Date().time,
+                        0
+                    )
+                )
+
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Milon", "Okay! See you soon.",
+                        Date().time,
+                        1
+                    )
+                )
+            }
+            "Work"->{
+                chatList.add(
+                    Chat(
+                        "sabbir",
+                        "Ahsan", "We'll meet tomorrow!",
+                        Date().time,
+                        1
+                    )
+                )
+            }
         }
 
         chatListAdapter.notifyDataSetChanged()
