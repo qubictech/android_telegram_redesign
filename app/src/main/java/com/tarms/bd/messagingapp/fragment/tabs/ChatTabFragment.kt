@@ -47,82 +47,11 @@ class ChatTabFragment : Fragment() {
         }
         recyclerView = view.findViewById(R.id.recycler_view)
 
-        fragmentName.let {
-            when (it) {
-                "All" -> chatList(
-                    listOf(
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        ),
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        ),
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        ),
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        ),
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        )
-                    )
-                )
-                "Friends" -> chatList(
-                    listOf(
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        ),
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        ),
-                        Chat(
-                            "",
-                            "Sabbir",
-                            "Hi! What about your study?",
-                            Date().time,
-                            3
-                        )
-                    )
-                )
-                "Work" -> chatList(
-                    listOf(
-
-                    )
-                )
-            }
-        }
+        chatList(fragmentName)
     }
 
-    private fun chatList(chat: List<Chat>) {
+    private fun chatList(type: String) {
+        chatList.clear()
         chatListAdapter = ChatListAdapter(chatList)
 
         recyclerView.apply {
@@ -130,19 +59,19 @@ class ChatTabFragment : Fragment() {
             hasFixedSize()
             layoutManager = LinearLayoutManager(context)
         }
-//
-//        for (i in 0..10) {
-//            chatList.add(
-//                Chat(
-//                    "",
-//                    "Sabbir",
-//                    "Hi! What about your study?",
-//                    Date().time,
-//                    3
-//                )
-//            )
-//        }
-//
-//        chatListAdapter.notifyDataSetChanged()
+
+        for (i in 0..10) {
+            chatList.add(
+                Chat(
+                    "jhsdfksdf",
+                    "Sabbir",
+                    "Hi! What about your study?",
+                    Date().time,
+                    3
+                )
+            )
+        }
+
+        chatListAdapter.notifyDataSetChanged()
     }
 }

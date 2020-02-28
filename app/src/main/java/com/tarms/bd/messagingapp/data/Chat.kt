@@ -12,12 +12,15 @@ data class Chat(
     val timestamp: Long,
     val unreadMsgCount: Int
 ) {
-    @BindingAdapter("android:setImageUrl")
-    fun avatar(imageView: ImageView, imgUrl: String) {
-        Glide.with(imageView.rootView)
-            .load(imgUrl)
-            .error(R.drawable.ic_person_outline)
-            .circleCrop()
-            .into(imageView)
+    companion object{
+        @JvmStatic
+        @BindingAdapter("android:setImageUrl")
+        fun avatar(imageView: ImageView, imgUrl: String) {
+            Glide.with(imageView.rootView)
+                .load(imgUrl)
+                .error(R.drawable.ic_person_outline)
+                .circleCrop()
+                .into(imageView)
+        }
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.tarms.bd.messagingapp.MainActivity
 import com.tarms.bd.messagingapp.R
 
 class SplashActivity : AppCompatActivity() {
@@ -15,7 +14,8 @@ class SplashActivity : AppCompatActivity() {
 
 
         Handler().postDelayed(Runnable {
-            startActivity(Intent(applicationContext,MainActivity::class.java))
+            startActivity(Intent(applicationContext,
+                MainActivity::class.java))
             finish()
         },300)
     }

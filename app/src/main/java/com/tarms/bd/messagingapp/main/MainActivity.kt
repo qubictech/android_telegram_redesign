@@ -1,16 +1,16 @@
-package com.tarms.bd.messagingapp
+package com.tarms.bd.messagingapp.main
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.MainFragmentViewPagerAdapter
 import com.tarms.bd.messagingapp.fragment.ChatListFragment
 import com.tarms.bd.messagingapp.fragment.ContactListFragment
 import com.tarms.bd.messagingapp.fragment.MoreFragment
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var pager: ViewPager
     private lateinit var mainFragmentViewPagerAdapter: MainFragmentViewPagerAdapter
@@ -21,7 +21,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
 
         bottomNavigationView = findViewById(R.id.bottom_nav)
-        bottomNavigationView.setOnNavigationItemSelectedListener(this)
+        bottomNavigationView.setOnNavigationItemSelectedListener { p0 ->
+            when (p0.itemId) {
+                R.id.message -> pager.setCurrentItem(0, true)
+                R.id.people -> pager.setCurrentItem(1, true)
+                R.id.more -> pager.setCurrentItem(2, true)
+            }
+
+            true
+        }
 
         pager = findViewById(R.id.view_pager)
 
@@ -57,15 +65,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             })
         }
 
-    }
+        val badge = bottomNavigationView.getOrCreateBadge(R.id.more)
+        badge.isVisible = true
+        badge.backgroundColor = resources.getColor(R.color.colorPrimary)
 
-    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when (p0.itemId) {
-            R.id.message -> pager.setCurrentItem(0, true)
-            R.id.people -> pager.setCurrentItem(1, true)
-            R.id.more -> pager.setCurrentItem(2, true)
-        }
+        val message = bottomNavigationView.getOrCreateBadge(R.id.message)
+        message.isVisible = true
+        message.number = 10
 
-        return true
     }
 }

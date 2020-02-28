@@ -92,6 +92,8 @@ class ContactListFragment : Fragment() {
     }
 
     private fun readContactList() {
+        contactList.clear()
+
         val phones = context!!.contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,
