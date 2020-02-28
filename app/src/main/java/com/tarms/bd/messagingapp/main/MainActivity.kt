@@ -2,6 +2,8 @@ package com.tarms.bd.messagingapp.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tarms.bd.messagingapp.R
@@ -9,6 +11,7 @@ import com.tarms.bd.messagingapp.adapter.MainFragmentViewPagerAdapter
 import com.tarms.bd.messagingapp.fragment.ChatListFragment
 import com.tarms.bd.messagingapp.fragment.ContactListFragment
 import com.tarms.bd.messagingapp.fragment.MoreFragment
+import com.tarms.bd.messagingapp.repository.MyViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -72,6 +75,5 @@ class MainActivity : AppCompatActivity() {
         val message = bottomNavigationView.getOrCreateBadge(R.id.message)
         message.isVisible = true
         message.number = 10
-
     }
 }

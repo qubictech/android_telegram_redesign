@@ -24,19 +24,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/chats"
         android:layout_marginBottom="110dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <androidx.cardview.widget.CardView
-        app:cardElevation="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:minHeight="50dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp">
 
@@ -50,7 +52,6 @@
                 android:src="@drawable/ic_attach_outline" />
 
             <EditText
-                android:maxHeight="150dp"
                 android:id="@+id/message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -59,6 +60,7 @@
                 android:gravity="center"
                 android:hint="Type something..."
                 android:inputType="textCapSentences|textMultiLine"
+                android:maxHeight="150dp"
                 android:textSize="14sp" />
 
             <ImageButton

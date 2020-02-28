@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ChatListFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -11,22 +11,25 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:background="@color/appbarColor"
-            app:navigationIcon="@drawable/ic_search_outline"
             android:layout_width="match_parent"
+            android:id="@+id/toolbar"
             android:layout_height="wrap_content"
+            android:background="@color/appbarColor"
+            android:gravity="end"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:title="@string/app_name" />
+            app:navigationIcon="@drawable/ic_search_outline"
+            app:title="@string/app_name"/>
 
         <com.google.android.material.tabs.TabLayout
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             android:id="@+id/tabs"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:tabIndicator="@drawable/ic_rectangle_193"
-            app:tabMode="scrollable">
+            app:tabIndicatorFullWidth="false"
+            app:tabMode="scrollable"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -47,9 +50,9 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

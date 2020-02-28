@@ -9,7 +9,7 @@
         android:id="@+id/people"
         android:title="People"/>
 
-    <item android:icon="@drawable/ic_menu_2_outline"
+    <item android:icon="@drawable/ic_options_2_outline"
         android:id="@+id/more"
         android:title="More"/>
 </menu>

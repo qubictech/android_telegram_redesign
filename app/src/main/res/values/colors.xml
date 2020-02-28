@@ -5,4 +5,9 @@
     <color name="colorAccent">#ffe482</color>
 
     <color name="appbarColor">#FFFFFF</color>
+
+    <color name="chatItemColorRight">#304FFE</color>
+    <color name="chatItemColorLeft">#333333</color>
+
+    <color name="colorView">#E9E9E9</color>
 </resources>

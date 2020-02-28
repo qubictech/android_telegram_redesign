@@ -1,17 +1,22 @@
 package com.tarms.bd.messagingapp.fragment.tabs
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatListAdapter
 import com.tarms.bd.messagingapp.data.Chat
+import com.tarms.bd.messagingapp.repository.MyRepository
+import com.tarms.bd.messagingapp.repository.MyViewModel
 import java.util.*
 
 class ChatTabFragment : Fragment() {
@@ -27,11 +32,6 @@ class ChatTabFragment : Fragment() {
         }
     }
 
-    private lateinit var fragmentName: String
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var chatListAdapter: ChatListAdapter
-    private val chatList = mutableListOf<Chat>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,113 +40,23 @@ class ChatTabFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_chat_tab, container, false)
     }
 
+    @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            fragmentName = it.getString(ARGS).toString()
+        val v = ViewModelProvider(this).get(MyViewModel::class.java)
+
+        arguments?.let { bundle ->
+            v.getChatList(bundle.getString(ARGS).toString()).observe(this, Observer { list ->
+                val chatListAdapter = context?.let { context ->
+                    ChatListAdapter(context, list)
+                }!!
+
+                view.findViewById<RecyclerView>(R.id.recycler_view).apply {
+                    adapter = chatListAdapter
+                    hasFixedSize()
+                    layoutManager = LinearLayoutManager(context)
+                }
+            })
         }
-        recyclerView = view.findViewById(R.id.recycler_view)
-
-        chatList(fragmentName)
-    }
-
-    private fun chatList(type: String) {
-        chatList.clear()
-        chatListAdapter = context?.let { ChatListAdapter(it, chatList) }!!
-
-        recyclerView.apply {
-            adapter = chatListAdapter
-            hasFixedSize()
-            layoutManager = LinearLayoutManager(context)
-        }
-
-        when (type) {
-            "All" -> {
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Sabbir", "Hi! How was your day?",
-                        Date().time,
-                        0
-                        )
-                )
-
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Saharia", "Have you taken your dinner?",
-                        Date().time,
-                        2
-                    )
-                )
-
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Aysha", "What about your study?",
-                        Date().time,
-                        0
-                    )
-                )
-
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Rabin", "Okay! Bye",
-                        Date().time,
-                        0
-                    )
-                )
-
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Milon", "Okay! See you soon.",
-                        Date().time,
-                        1
-                    )
-                )
-
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Ahsan", "We'll meet tomorrow!",
-                        Date().time,
-                        1
-                    )
-                )
-            }
-            "Friends"->{
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Rabin", "Okay! Bye",
-                        Date().time,
-                        0
-                    )
-                )
-
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Milon", "Okay! See you soon.",
-                        Date().time,
-                        1
-                    )
-                )
-            }
-            "Work"->{
-                chatList.add(
-                    Chat(
-                        "sabbir",
-                        "Ahsan", "We'll meet tomorrow!",
-                        Date().time,
-                        1
-                    )
-                )
-            }
-        }
-
-        chatListAdapter.notifyDataSetChanged()
     }
 }

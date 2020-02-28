@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.RecyclerView
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.data.Chat
 
@@ -23,6 +24,10 @@ class ChatActivity : AppCompatActivity() {
 
         chat?.let {
             supportActionBar?.title = it.name
+        }
+
+        findViewById<RecyclerView>(R.id.chats).apply {
+
         }
     }
 

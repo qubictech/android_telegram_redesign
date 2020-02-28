@@ -2,15 +2,17 @@ package com.tarms.bd.messagingapp.fragment
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatTabAdapter
 import com.tarms.bd.messagingapp.fragment.tabs.ChatTabFragment
+
 
 class ChatListFragment : Fragment() {
 
@@ -24,6 +26,11 @@ class ChatListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+
+        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 
         val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
@@ -61,6 +68,22 @@ class ChatListFragment : Fragment() {
             adapter = tabAdapter
             addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.add_btn, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == R.id.add_new_group)
+            Toast.makeText(context, "Add New Chat Group", Toast.LENGTH_SHORT).show()
+
+        if (item.itemId == android.R.id.home)
+            Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
+
+        return super.onOptionsItemSelected(item)
     }
 
 }
