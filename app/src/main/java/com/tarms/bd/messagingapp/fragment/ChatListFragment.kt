@@ -9,11 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.tarms.bd.messagingapp.R
-import com.tarms.bd.messagingapp.adapter.TabAdapter
+import com.tarms.bd.messagingapp.adapter.ChatTabAdapter
+import com.tarms.bd.messagingapp.fragment.tabs.ChatTabFragment
 
-/**
- * A simple [Fragment] subclass.
- */
 class ChatListFragment : Fragment() {
 
     override fun onCreateView(
@@ -30,7 +28,9 @@ class ChatListFragment : Fragment() {
         val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
 
-        val tabAdapter = TabAdapter(childFragmentManager, tabs.tabCount)
+        val fragments = listOf<Fragment>(ChatTabFragment(), ChatTabFragment(), ChatTabFragment())
+
+        val tabAdapter = ChatTabAdapter(childFragmentManager, fragments)
 
         val tabLayout = object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
