@@ -51,6 +51,7 @@ class AuthenticationFragment : Fragment() {
 
         p1 = view.findViewById(R.id.p1)
         p1.addTextChangedListener(GenericTextWatcher(p1))
+        p1.requestFocus()
 
         p2 = view.findViewById(R.id.p2)
         p2.addTextChangedListener(GenericTextWatcher(p2))
