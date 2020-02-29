@@ -2,33 +2,33 @@ package com.tarms.bd.messagingapp.fragment.sign
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.google.android.material.button.MaterialButton
 import com.tarms.bd.messagingapp.R
+import com.tarms.bd.messagingapp.main.UserSignActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val PHONE_NUMBER = "com.tarms.bd.messagingapp.fragment.sign.phone"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AuthenticationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AuthenticationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var phoneNumber: String? = null
+
+    private lateinit var p1: EditText
+    private lateinit var p2: EditText
+    private lateinit var p3: EditText
+    private lateinit var p4: EditText
+    private lateinit var p5: EditText
+    private lateinit var p6: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            phoneNumber = it.getString(PHONE_NUMBER)
         }
     }
 
@@ -40,24 +40,80 @@ class AuthenticationFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_authentication, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<MaterialButton>(R.id.continue_btn)
+            .setOnClickListener {
+                val userSignActivity: UserSignActivity = activity as UserSignActivity
+                userSignActivity.changeFragment(SignUpFragment())
+            }
+
+        p1 = view.findViewById(R.id.p1)
+        p1.addTextChangedListener(GenericTextWatcher(p1))
+
+        p2 = view.findViewById(R.id.p2)
+        p2.addTextChangedListener(GenericTextWatcher(p2))
+
+        p3 = view.findViewById(R.id.p3)
+        p3.addTextChangedListener(GenericTextWatcher(p3))
+
+        p4 = view.findViewById(R.id.p4)
+        p4.addTextChangedListener(GenericTextWatcher(p4))
+
+        p5 = view.findViewById(R.id.p5)
+        p5.addTextChangedListener(GenericTextWatcher(p5))
+
+        p6 = view.findViewById(R.id.p6)
+        p1.addTextChangedListener(GenericTextWatcher(p6))
+    }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AuthenticationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(phone_number: String) =
             AuthenticationFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(PHONE_NUMBER, phone_number)
                 }
             }
+    }
+
+    inner class GenericTextWatcher(private val view: View) : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            val string = s.toString()
+
+            when (view.id) {
+                R.id.p1 -> if (string.length == 1) {
+                    p2.requestFocus()
+                }
+
+                R.id.p2 -> if (string.length == 1) {
+                    p3.requestFocus()
+                } else if (string.isEmpty()) p1.requestFocus()
+
+                R.id.p3 -> if (string.length == 1) {
+                    p4.requestFocus()
+                } else if (string.isEmpty()) p2.requestFocus()
+
+                R.id.p4 -> if (string.length == 1) {
+                    p5.requestFocus()
+                } else if (string.isEmpty()) p3.requestFocus()
+
+                R.id.p5 -> if (string.length == 1) {
+                    p6.requestFocus()
+                } else if (string.isEmpty()) p4.requestFocus()
+
+                R.id.p6 -> if (string.length == 1) p6.clearFocus()
+            }
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+        }
+
     }
 }
