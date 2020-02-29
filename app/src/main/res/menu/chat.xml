@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:icon="@drawable/ic_person_outline"
         android:title="View Contact"
         app:showAsAction="never" />
 
     <item
+        android:icon="@drawable/ic_bell_off_outline"
         android:title="Mute Notification"
         app:showAsAction="never" />
 
     <item
+        android:icon="@drawable/ic_alert_triangle_outline"
         android:title="Report"
         app:showAsAction="never" />
 
     <item
+        android:icon="@drawable/ic_block_black_24dp"
         android:title="Block"
         app:showAsAction="never" />
 </menu>

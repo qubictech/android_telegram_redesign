@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingBottom="100dp"
+            android:paddingBottom="50dp"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <LinearLayout
@@ -519,7 +519,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
+                    android:layout_margin="16dp"
                     android:text="Version 1.0.0" />
 
             </LinearLayout>

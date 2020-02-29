@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Please provide your name and \nan optional profile photo." />
+            android:text="Please provide your name and an optional profile photo." />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name"
