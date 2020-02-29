@@ -8,6 +8,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
+        app:liftOnScroll="true"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
@@ -24,6 +25,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/chat_item_left"
         android:id="@+id/chats"
         android:layout_marginBottom="110dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
