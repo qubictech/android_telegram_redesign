@@ -7,11 +7,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatTabAdapter
+import com.tarms.bd.messagingapp.data.Chat
 import com.tarms.bd.messagingapp.fragment.tabs.ChatTabFragment
+import com.tarms.bd.messagingapp.repository.MyViewModel
+import java.util.*
 
 
 class ChatListFragment : Fragment() {
@@ -35,39 +40,51 @@ class ChatListFragment : Fragment() {
         val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
 
-        val fragments = listOf<Fragment>(
-            ChatTabFragment.newInstance("All"),
-            ChatTabFragment.newInstance("Friends"),
-            ChatTabFragment.newInstance("Work")
-        )
+        val chatGroups = mutableListOf<String>()
 
-        val tabAdapter = ChatTabAdapter(childFragmentManager, fragments)
+        val viewModelProvider = ViewModelProvider(this).get(MyViewModel::class.java)
 
-        val tabLayout = object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                if (tab != null) {
-                    viewPager.currentItem = tab.position
+        viewModelProvider.getGroups().observe(viewLifecycleOwner, Observer { groups ->
+            val fragments = mutableListOf<Fragment>()
+            tabs.removeAllTabs()
+
+            for (group in groups) {
+                chatGroups.add(group)
+
+                tabs.addTab(tabs.newTab())
+                tabs.getTabAt(tabs.tabCount - 1)?.text = group
+
+                fragments.add(ChatTabFragment.newInstance(group))
+            }
+
+            val tabAdapter = ChatTabAdapter(childFragmentManager, fragments)
+
+            val tabLayout = object : TabLayout.OnTabSelectedListener {
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                    if (tab != null) {
+                        viewPager.currentItem = tab.position
+                    }
                 }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+
+                }
+
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
+            tabs.apply {
+                addOnTabSelectedListener(tabLayout)
             }
 
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-
+            viewPager.apply {
+                adapter = tabAdapter
+                addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
             }
-
-        }
-
-        tabs.apply {
-            addOnTabSelectedListener(tabLayout)
-        }
-
-        viewPager.apply {
-            adapter = tabAdapter
-            addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
-        }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

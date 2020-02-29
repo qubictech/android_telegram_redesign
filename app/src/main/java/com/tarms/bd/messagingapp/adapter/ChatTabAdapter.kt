@@ -14,4 +14,5 @@ class ChatTabAdapter(
     }
 
     override fun getCount() = fragments.size
+
 }

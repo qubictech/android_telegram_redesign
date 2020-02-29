@@ -7,6 +7,7 @@
     tools:context=".fragment.ChatListFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        app:liftOnScroll="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -29,23 +30,7 @@
             app:tabIndicator="@drawable/ic_rectangle_193"
             app:tabIndicatorFullWidth="false"
             app:tabMode="scrollable"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="All" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Friends" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Work" />
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

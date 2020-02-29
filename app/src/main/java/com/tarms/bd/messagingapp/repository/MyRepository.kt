@@ -77,21 +77,20 @@ object MyRepository {
 
     private val list = HashMap<String, MutableLiveData<List<Chat>>>()
 
+    private val groupList = MutableLiveData<List<String>>()
+
     init {
-        val all = MutableLiveData<List<Chat>>()
+        setChatInGroup("All", allChats)
+        setChatInGroup("Friends", friendChat)
+        setChatInGroup("Work", workChat)
 
-        all.value = allChats
-        list["All"] = all
-
-        val f = MutableLiveData<List<Chat>>()
-
-        f.value = friendChat
-        list["Friends"] = f
-
-        val w = MutableLiveData<List<Chat>>()
-
-        w.value = workChat
-        list["Work"] = w
+        setGroup(
+            listOf(
+                "All",
+                "Friends",
+                "Work"
+            )
+        )
     }
 
     fun setChatInGroup(group: String, chats: List<Chat>) {
@@ -106,5 +105,13 @@ object MyRepository {
     fun getChatListByGroup(group: String): LiveData<List<Chat>> {
         return list[group]
             ?: throw NullPointerException("Expression 'list[group]' must not be null")
+    }
+
+    fun setGroup(group: List<String>) {
+        groupList.value = group
+    }
+
+    fun getGroup(): LiveData<List<String>> {
+        return groupList
     }
 }

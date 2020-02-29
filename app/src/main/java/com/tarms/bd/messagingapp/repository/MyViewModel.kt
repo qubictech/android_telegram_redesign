@@ -10,4 +10,10 @@ class MyViewModel : ViewModel() {
     }
 
     fun getChatList(type: String) = MyRepository.getChatListByGroup(type)
+
+    fun setGroup(groups: List<String>) {
+        MyRepository.setGroup(groups)
+    }
+
+    fun getGroups() = MyRepository.getGroup()
 }
