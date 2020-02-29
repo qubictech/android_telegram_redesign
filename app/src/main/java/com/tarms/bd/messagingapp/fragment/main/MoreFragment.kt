@@ -1,4 +1,4 @@
-package com.tarms.bd.messagingapp.fragment
+package com.tarms.bd.messagingapp.fragment.main
 
 import android.content.Context
 import android.net.Uri

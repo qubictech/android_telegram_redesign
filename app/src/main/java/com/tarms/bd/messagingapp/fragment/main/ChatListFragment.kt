@@ -1,4 +1,4 @@
-package com.tarms.bd.messagingapp.fragment
+package com.tarms.bd.messagingapp.fragment.main
 
 
 import android.os.Bundle
@@ -13,10 +13,8 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatTabAdapter
-import com.tarms.bd.messagingapp.data.Chat
 import com.tarms.bd.messagingapp.fragment.tabs.ChatTabFragment
 import com.tarms.bd.messagingapp.repository.MyViewModel
-import java.util.*
 
 
 class ChatListFragment : Fragment() {

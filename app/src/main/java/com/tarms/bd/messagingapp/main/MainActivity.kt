@@ -2,16 +2,13 @@ package com.tarms.bd.messagingapp.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.MainFragmentViewPagerAdapter
-import com.tarms.bd.messagingapp.fragment.ChatListFragment
-import com.tarms.bd.messagingapp.fragment.ContactListFragment
-import com.tarms.bd.messagingapp.fragment.MoreFragment
-import com.tarms.bd.messagingapp.repository.MyViewModel
+import com.tarms.bd.messagingapp.fragment.main.ChatListFragment
+import com.tarms.bd.messagingapp.fragment.main.ContactListFragment
+import com.tarms.bd.messagingapp.fragment.main.MoreFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         pager = findViewById(R.id.view_pager)
 
-        val fragments = listOf(ChatListFragment(), ContactListFragment(), MoreFragment())
+        val fragments = listOf(ChatListFragment(),
+            ContactListFragment(),
+            MoreFragment()
+        )
 
         mainFragmentViewPagerAdapter =
             MainFragmentViewPagerAdapter(supportFragmentManager, fragments)

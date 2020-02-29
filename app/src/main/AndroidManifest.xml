@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".main.ChatActivity"></activity>
+        <activity android:name=".main.UserSignActivity"></activity>
+        <activity android:name=".main.ChatActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".main.SplashActivity">
             <intent-filter>
