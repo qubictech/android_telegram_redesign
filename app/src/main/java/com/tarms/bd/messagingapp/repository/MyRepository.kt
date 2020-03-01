@@ -11,6 +11,42 @@ object MyRepository {
             "sabbir",
             "Ahsan", "We'll meet tomorrow!",
             Date().time,
+            12
+        ),
+        Chat(
+            "sabbir",
+            "Sabbir", "Hi! How was your day?",
+            Date().time,
+            0
+        ),
+        Chat(
+            "sabbir",
+            "Saharia", "Have you taken your dinner?",
+            Date().time,
+            2
+        ),
+        Chat(
+            "sabbir",
+            "Aysha", "What about your study?",
+            Date().time,
+            0
+        ),
+        Chat(
+            "sabbir",
+            "Rabin", "Okay! Bye",
+            Date().time,
+            0
+        ),
+        Chat(
+            "sabbir",
+            "Milon", "Okay! See you soon.",
+            Date().time,
+            1
+        ),
+        Chat(
+            "sabbir",
+            "Ahsan", "We'll meet tomorrow!",
+            Date().time,
             1
         ),
         Chat(

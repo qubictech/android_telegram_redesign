@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="version"
+            type="java.lang.String" />
+
+        <variable
             name="user"
             type="com.tarms.bd.messagingapp.data.User" />
 
@@ -520,7 +524,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="16dp"
-                    android:text="Version 1.0.0" />
+                    android:text="@{version}" />
 
             </LinearLayout>
 
