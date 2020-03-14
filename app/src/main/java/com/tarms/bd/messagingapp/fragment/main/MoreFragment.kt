@@ -1,17 +1,25 @@
 package com.tarms.bd.messagingapp.fragment.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.tarms.bd.messagingapp.BuildConfig
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.data.User
 import com.tarms.bd.messagingapp.databinding.FragmentMoreBinding
+import com.tarms.bd.messagingapp.fragment.sign.AuthenticationFragment
+import com.tarms.bd.messagingapp.generated.callback.OnClickListener
+import com.tarms.bd.messagingapp.main.UserSignActivity
+import com.tarms.bd.messagingapp.utils.FirebaseUtil
+import com.tarms.bd.messagingapp.utils.OnViewItemClickListener
+import java.util.logging.Logger
 
-class MoreFragment : Fragment() {
+class MoreFragment : Fragment(), OnViewItemClickListener {
     lateinit var binding: FragmentMoreBinding
 
     override fun onCreateView(
@@ -38,5 +46,22 @@ class MoreFragment : Fragment() {
 
         binding.user = User(name = "Mazharul Sabbir", imgUrl = imgUrl)
 
+        FirebaseUtil.isExistedUser {
+            Logger.getLogger(AuthenticationFragment.TAG).warning("User is Already Exist? : $it")
+
+            if (!it) {
+                FirebaseUtil.createNewUser(User("Sabbir", imgUrl))
+            }
+        }
+    }
+
+    override fun onViewClicked(view: View) {
+        when (view.id) {
+            R.id.card_logout -> {
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(context, UserSignActivity::class.java))
+                activity?.finish()
+            }
+        }
     }
 }

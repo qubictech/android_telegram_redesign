@@ -44,7 +44,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberDecimal"
+                android:inputType="number"
                 android:maxLength="11" />
         </com.google.android.material.textfield.TextInputLayout>
 

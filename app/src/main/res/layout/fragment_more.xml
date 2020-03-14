@@ -13,6 +13,10 @@
             name="user"
             type="com.tarms.bd.messagingapp.data.User" />
 
+        <variable
+            name="click_event"
+            type="com.tarms.bd.messagingapp.utils.OnViewItemClickListener" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -488,7 +492,9 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
+                    android:id="@+id/card_logout"
                     android:foreground="?selectableItemBackground"
+                    android:onClick="@{(v)->click_event.onViewClicked(v)}"
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 

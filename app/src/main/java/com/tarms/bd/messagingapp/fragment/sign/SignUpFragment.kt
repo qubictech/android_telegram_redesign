@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputLayout
 import com.tarms.bd.messagingapp.R
+import com.tarms.bd.messagingapp.data.User
 import com.tarms.bd.messagingapp.main.MainActivity
+import com.tarms.bd.messagingapp.utils.FirebaseUtil
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -28,21 +31,16 @@ class SignUpFragment : Fragment() {
 
         view.findViewById<MaterialButton>(R.id.finish_btn)
             .setOnClickListener {
-                startActivity(Intent(context, MainActivity::class.java))
-                activity?.finish()
+                val mName = view.findViewById<TextInputLayout>(R.id.full_name)
+                if (mName.editText?.text.toString().isNotEmpty())
+                    FirebaseUtil.createNewUser(User(mName.editText?.text.toString(), "")).let {
+                        startActivity(Intent(context, MainActivity::class.java))
+                        activity?.finish()
+                    }
             }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignUpFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             SignUpFragment().apply {

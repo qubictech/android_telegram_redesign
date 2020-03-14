@@ -33,7 +33,7 @@
             android:text="Please provide your name and an optional profile photo." />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name"
+            android:id="@+id/full_name"
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
