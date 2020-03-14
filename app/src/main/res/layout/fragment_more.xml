@@ -34,8 +34,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/appbarColor"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:navigationIcon="@drawable/ic_search_outline"
-                app:title="@string/app_name" />
+                app:title="Profile" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -104,14 +103,13 @@
                             android:textColor="#000000"
                             android:textSize="14sp" />
 
-                        <ImageView
+                        <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="12dp"
-                            android:src="@drawable/ic_checkmark_circle_outline" />
+                            android:layout_marginBottom="12dp" />
 
                     </LinearLayout>
 
@@ -156,13 +154,15 @@
                             android:textColor="#000000"
                             android:textSize="14sp" />
 
-                        <ImageView
+                        <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="20dp"
                             android:layout_marginBottom="12dp"
+                            android:checked="true"
+                            android:enabled="true"
                             android:src="@drawable/ic_checkmark_circle_outline" />
 
                     </LinearLayout>
@@ -313,13 +313,14 @@
                             android:textColor="#000000"
                             android:textSize="14sp" />
 
-                        <ImageView
+                        <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="20dp"
                             android:layout_marginBottom="12dp"
+                            android:checked="true"
                             android:src="@drawable/ic_checkmark_circle_outline" />
 
                     </LinearLayout>
@@ -488,11 +489,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
-                    android:id="@+id/card_logout"
                     android:foreground="?selectableItemBackground"
                     android:onClick="@{(v)->click_event.onViewClicked(v)}"
                     app:cardCornerRadius="0dp"

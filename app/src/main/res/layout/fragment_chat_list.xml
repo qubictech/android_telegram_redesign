@@ -7,19 +7,17 @@
     tools:context=".fragment.main.ChatListFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        app:liftOnScroll="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:liftOnScroll="false">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/appbarColor"
-            android:gravity="end"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:navigationIcon="@drawable/ic_search_outline"
-            app:title="@string/app_name"/>
+            app:title="Chats" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -30,7 +28,7 @@
             app:tabIndicator="@drawable/ic_rectangle_193"
             app:tabIndicatorFullWidth="false"
             app:tabMode="scrollable"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
