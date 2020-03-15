@@ -36,4 +36,9 @@ object FirebaseUtil {
     fun createNewUser(user: User) {
         reference.setValue(user)
     }
+
+    fun createNewChatChannel(){
+
+    }
+
 }
