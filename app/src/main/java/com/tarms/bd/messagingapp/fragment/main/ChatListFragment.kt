@@ -1,6 +1,8 @@
 package com.tarms.bd.messagingapp.fragment.main
 
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -14,10 +16,15 @@ import com.google.android.material.tabs.TabLayout
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.adapter.ChatTabAdapter
 import com.tarms.bd.messagingapp.fragment.tabs.ChatTabFragment
+import com.tarms.bd.messagingapp.main.StartNewChatActivity
 import com.tarms.bd.messagingapp.repository.MyViewModel
-
+import java.util.logging.Logger
 
 class ChatListFragment : Fragment() {
+
+    companion object {
+        const val NEW_CHAT_REQUEST_CODE = 121
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,13 +99,24 @@ class ChatListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (item.itemId == R.id.add_new_group)
-            Toast.makeText(context, "Add New Chat Group", Toast.LENGTH_SHORT).show()
+        if (item.itemId == R.id.add_new_group) {
+            val startNewChatActivity = Intent(context, StartNewChatActivity::class.java)
+            startActivityForResult(startNewChatActivity, NEW_CHAT_REQUEST_CODE)
+        }
 
         if (item.itemId == android.R.id.home)
             Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK)
+            if (requestCode == NEW_CHAT_REQUEST_CODE) {
+                Logger.getLogger("New Chat Request").warning(": success!")
+            }
     }
 
 }

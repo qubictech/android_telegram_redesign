@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".ApplicationPreferences"
@@ -18,8 +19,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".main.UserSignActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".main.StartNewChatActivity"/>
+        <activity
+            android:name=".main.UserSignActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".main.ChatActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".main.SplashActivity">
