@@ -1,21 +1,16 @@
-package com.tarms.bd.messagingapp.fragment.sign
+package com.tarms.bd.messagingapp.fragment.authentication
 
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.main.MainActivity
-import com.tarms.bd.messagingapp.main.UserSignActivity
-import kotlinx.android.synthetic.main.fragment_sign_in.*
-import java.lang.Exception
-import java.lang.NumberFormatException
+import com.tarms.bd.messagingapp.main.UserAuthActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -65,7 +60,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     }
 
     private fun openAuthenticationFragment(phone: String) {
-        val userSignActivity: UserSignActivity = activity as UserSignActivity
-        userSignActivity.changeFragment(AuthenticationFragment.newInstance(phone_number = phone))
+        val userAuthActivity: UserAuthActivity = activity as UserAuthActivity
+        userAuthActivity.changeFragment(AuthenticationFragment.newInstance(phone_number = phone))
     }
 }

@@ -9,9 +9,6 @@ import com.tarms.bd.messagingapp.adapter.MainFragmentViewPagerAdapter
 import com.tarms.bd.messagingapp.fragment.main.ChatListFragment
 import com.tarms.bd.messagingapp.fragment.main.ContactListFragment
 import com.tarms.bd.messagingapp.fragment.main.MoreFragment
-import com.tarms.bd.messagingapp.fragment.sign.AuthenticationFragment
-import com.tarms.bd.messagingapp.utils.FirebaseUtil
-import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity() {
 

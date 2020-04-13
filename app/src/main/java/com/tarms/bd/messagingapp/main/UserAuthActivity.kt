@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.tarms.bd.messagingapp.R
-import com.tarms.bd.messagingapp.fragment.sign.SignInFragment
+import com.tarms.bd.messagingapp.fragment.authentication.SignInFragment
 
-class UserSignActivity : AppCompatActivity() {
+class UserAuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

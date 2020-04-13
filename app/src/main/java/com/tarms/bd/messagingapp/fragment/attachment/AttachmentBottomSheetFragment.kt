@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 import com.tarms.bd.messagingapp.R
+import com.tarms.bd.messagingapp.utils.PrefUtils
 
 /**
  * A simple [Fragment] subclass.
@@ -27,8 +28,8 @@ class AttachmentBottomSheetFragment : BottomSheetDialogFragment() {
 
     }
 
-    private fun loadImagesFromDeviceStorage(){
-
+    private fun loadImagesFromDeviceStorage() {
+        
     }
 
 }

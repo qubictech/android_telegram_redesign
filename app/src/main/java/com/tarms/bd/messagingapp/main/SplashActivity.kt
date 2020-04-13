@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             startActivity(Intent(applicationContext,
-                UserSignActivity::class.java))
+                UserAuthActivity::class.java))
             finish()
         },300)
     }

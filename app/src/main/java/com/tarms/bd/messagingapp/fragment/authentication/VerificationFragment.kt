@@ -1,4 +1,4 @@
-package com.tarms.bd.messagingapp.fragment.sign
+package com.tarms.bd.messagingapp.fragment.authentication
 
 
 import android.content.Intent
@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -20,8 +18,8 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.tarms.bd.messagingapp.R
 import com.tarms.bd.messagingapp.main.MainActivity
-import com.tarms.bd.messagingapp.main.UserSignActivity
-import com.tarms.bd.messagingapp.utils.FirebaseUtil
+import com.tarms.bd.messagingapp.main.UserAuthActivity
+import com.tarms.bd.messagingapp.repository.FirebaseUtil
 import java.util.concurrent.TimeUnit
 import java.util.logging.Logger
 
@@ -141,16 +139,14 @@ class AuthenticationFragment : Fragment(R.layout.fragment_authentication) {
                     val user = task.result?.user
 
                     if (user != null)
-                        FirebaseUtil.isExistedUser { available ->
-                            Logger.getLogger(TAG).warning("user activity $available")
+                        FirebaseUtil.getOrCreateUser {
+                            Logger.getLogger(TAG).warning("getOrCreateUser: $it")
 
-                            if (available) {
-                                startActivity(Intent(context, MainActivity::class.java))
-                                activity!!.finish()
+                            if (!it) {
+                                val userAuthActivity: UserAuthActivity = activity as UserAuthActivity
+                                userAuthActivity.changeFragment(SignUpFragment())
                             } else {
-                                val userSignActivity: UserSignActivity =
-                                    activity as UserSignActivity
-                                userSignActivity.changeFragment(SignUpFragment())
+                                startActivity(Intent(context, MainActivity::class.java))
                             }
                         }
                 } else {
